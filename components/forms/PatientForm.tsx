@@ -12,6 +12,7 @@ import SubmitButton from "@/components/ui/SubmitButton";
 import {useState} from "react";
 import {UserFormValidation} from "@/lib/validation";
 import {useRouter} from "next/navigation";
+import {createUser} from "@/lib/actions/patient.actions";
 
 export enum FormFieldType{
     INPUT = 'input',
@@ -40,10 +41,10 @@ const PatientForm = () => {
         setIsLoading(true);
         
         try {
-            // const userData={ name, email, phone }
-            // const user = await createUser(userData);
-            //
-            // if (user) router.push('/patients/${user.$id}/register')
+            const userData={ name, email, phone }
+            const user = await createUser(userData);
+
+            if (user) router.push('/patients/${user.$id}/register')
         }catch (error){
             console.log(error)
         }
@@ -61,7 +62,7 @@ const PatientForm = () => {
                     control={form.control}
                     name={"name"}
                     label={"Full Name"}
-                    placeholder={"Jhon Doe"}
+                    placeholder={"John Doe"}
                     iconSrc={"/assets/icons/user.svg"}
                     iconAlt={"user"}
                 />
@@ -81,7 +82,7 @@ const PatientForm = () => {
                     control={form.control}
                     name={"phone"}
                     label={"Phone Number"}
-                    placeholder={"0777 123 123"}
+                    placeholder={"777123123"}
                 />
                 
                 
