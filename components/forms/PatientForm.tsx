@@ -18,6 +18,7 @@ export const PatientForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
+
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
     defaultValues: {
@@ -44,6 +45,7 @@ export const PatientForm = () => {
       }
     } catch (error) {
       console.log(error);
+
     }
 
     setIsLoading(false);
