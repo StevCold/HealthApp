@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-
-import { cn } from '@/lib/utils';
+import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
-const fontSans = Plus_Jakarta_Sans({ 
+import { cn } from "@/lib/utils";
+
+const fontSans = FontSans({
   subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-sans',
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "HealthApp",
-  description: "HealthApp is a healthcare management system.",
+  title: "CarePulse",
+  description:
+    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+  icons: {
+    icon: "/assets/icons/logo-icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -23,14 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>
-          <ThemeProvider
-                attribute="class"
-                defaultTheme="dark"
-              >
-                {children}
-          </ThemeProvider>
-        </body>
+      <body
+        className={cn(
+          "min-h-screen bg-dark-300 font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -16,3 +16,4 @@ export const createAppointment = async (appointment: CreateAppointmentParams) =>
         console.log(error);
     }
 }
+
