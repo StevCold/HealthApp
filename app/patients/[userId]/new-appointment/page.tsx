@@ -1,11 +1,9 @@
 import Image from "next/image";
 
-import AppointmentForm from "@/components/forms/AppointmentForm";
+import { AppointmentForm } from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
 
-export default async function NewAppointment({
-  params: { userId },
-}: SearchParamProps) {
+const Appointment = async ({ params: { userId } }: SearchParamProps) => {
   const patient = await getPatient(userId);
 
   return (
@@ -16,25 +14,29 @@ export default async function NewAppointment({
             src="/assets/icons/logo-full.svg"
             height={1000}
             width={1000}
-            alt="patient"
+            alt="logo"
             className="mb-12 h-10 w-fit"
           />
+
           <AppointmentForm
-            type="create"
+            patientId={patient?.$id}
             userId={userId}
-            patientId={patient.$id}
+            type="create"
           />
-          <p className="copyright mt-10 py-12">© 2024 CarePulse</p>
+
+          <p className="copyright mt-10 py-12">© 2024 CarePluse</p>
         </div>
       </section>
+
       <Image
         src="/assets/images/appointment-img.png"
-        height={1000}
-        width={1000}
+        height={1500}
+        width={1500}
         alt="appointment"
         className="side-img max-w-[390px] bg-bottom"
       />
     </div>
   );
-}
-// ssad
+};
+
+export default Appointment;
