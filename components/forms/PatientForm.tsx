@@ -4,11 +4,22 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form } from "@/components/ui/form"
+<<<<<<< HEAD
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
+=======
+
+import { Input } from "@/components/ui/input"
+import CustomFormField from "@/components/CustomFormField";
+import {SELECTOR} from "postcss-selector-parser";
+import SubmitButton from "@/components/ui/SubmitButton";
+import {useState} from "react";
+import {UserFormValidation} from "@/lib/validation";
+import {useRouter} from "next/navigation";
+>>>>>>> 4c45a5a4c762b278367501e2d0c419a3bb6b18a5
 import {createUser} from "@/lib/actions/patient.actions";
 
 export enum FormFieldType {
@@ -43,6 +54,7 @@ const PatientForm = () => {
         console.log(error);
     }
 }
+<<<<<<< HEAD
 return (
     <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -84,3 +96,7 @@ return (
 }
 
 export default PatientForm
+=======
+export default PatientForm;
+
+>>>>>>> 4c45a5a4c762b278367501e2d0c419a3bb6b18a5

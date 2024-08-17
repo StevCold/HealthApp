@@ -9,6 +9,7 @@ interface ButtonProps{
 }
 
 const SubmitButton = ({isLoading, className, children}: ButtonProps) => {
+<<<<<<< HEAD
     return (
         <Button type="submit" disabled={isLoading} className={className ??
             'shad-primary-btn w-full'}>
@@ -26,6 +27,25 @@ const SubmitButton = ({isLoading, className, children}: ButtonProps) => {
             ): children}
         </Button>
     )
+=======
+  return (
+    <Button type="submit" disabled={isLoading} className={className ?? 
+        'shad-primary-btn w-full'}>
+        {isLoading ? (
+            <div className="flex items-center gap-4">
+                <Image 
+                    src="/assets/icons/loader.svg"
+                    alt="loader"
+                    width={24}
+                    height={24}
+                    className="animate-spin"
+                />
+                Loading...
+            </div>
+        ): children}
+    </Button>
+  )
+>>>>>>> 4c45a5a4c762b278367501e2d0c419a3bb6b18a5
 }
 
 export default SubmitButton
