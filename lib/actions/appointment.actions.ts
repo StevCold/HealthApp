@@ -1,25 +1,19 @@
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
-import {APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases} from "@/lib/appwrite.config";
+'use server'
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
+import { ID } from "node-appwrite"
+import { parseStringify } from "../utils";
 
-export const createAppointment = async () => {
+export const createAppointment = async (appointment: CreateAppointmentParams) => {
     try {
-        // aici trebuie ceva const newPatient din patient.action.ts -> 2:55:14
-    }catch (error){
-        console.log(error);
-    }
-}
-
-export const getAppointment = async (appointmentId: string) => {
-    try {
-        const appointment = await databases.getDocument(
+        const newAppointment = await databases.createDocument(
             DATABASE_ID!,
             APPOINTMENT_COLLECTION_ID!,
-            appointmentId
+            ID.unique(),
+            appointment
         )
-        
-        return parseStringify(appointment);
-    }catch (error){
+        return parseStringify(newAppointment);
+    } catch (error) {
         console.log(error);
     }
 }
+
