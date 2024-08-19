@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
@@ -11,9 +10,8 @@ import { useState } from "react"
 import { getAppointmentSchema } from "@/lib/validation"
 import { createAppointment } from "@/lib/actions/appointment.actions"
 import { useRouter } from "next/navigation"
-import { FormFieldType } from "./PatientForm"
+import { FormFieldType } from "../CustomFormField"
 import Image from "next/image"
-import { createUser } from "@/lib/actions/patient.actions"
  
 const AppointmentForm = ({
   userId, patientId, type
