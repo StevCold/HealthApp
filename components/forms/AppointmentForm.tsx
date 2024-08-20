@@ -61,7 +61,7 @@ export const AppointmentForm = ({
     let status;
     switch (type) {
       case "schedule":
-        status = "scheduled";
+        status = "schedule";
         break;
       case "cancel":
         status = "cancelled";
