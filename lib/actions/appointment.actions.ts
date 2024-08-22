@@ -41,9 +41,9 @@ export const getRecentAppointmentList = async () => {
       [Query.orderDesc("$createdAt")]
     );
 
-    // const scheduledAppointments = (
+    // const scheduleAppointments = (
     //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
+    // ).filter((appointment) => appointment.status === "schedule");
 
     // const pendingAppointments = (
     //   appointments.documents as Appointment[]
@@ -55,14 +55,14 @@ export const getRecentAppointmentList = async () => {
 
     // const data = {
     //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
+    //   scheduleCount: scheduleAppointments.length,
     //   pendingCount: pendingAppointments.length,
     //   cancelledCount: cancelledAppointments.length,
     //   documents: appointments.documents,
     // };
 
     const initialCounts = {
-      scheduledCount: 0,
+      scheduleCount: 0,
       pendingCount: 0,
       cancelledCount: 0,
     };
@@ -70,8 +70,8 @@ export const getRecentAppointmentList = async () => {
     const counts = (appointments.documents as Appointment[]).reduce(
       (acc, appointment) => {
         switch (appointment.status) {
-          case "scheduled":
-            acc.scheduledCount++;
+          case "schedule":
+            acc.scheduleCount++;
             break;
           case "pending":
             acc.pendingCount++;
@@ -125,7 +125,7 @@ export const updateAppointment = async ({
   type,
 }: UpdateAppointmentParams) => {
   try {
-    // Update appointment to scheduled -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument
+    // Update appointment to schedule -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
